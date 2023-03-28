@@ -1,5 +1,7 @@
 package net.codejava;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,33 +9,20 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-
 @Entity
-public class Review {
+public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
-    private Product product;
-    @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user; // Change from Customer to User
-    private int rating;
-    private String comment;
-
+    private LocalDate orderDate;
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public Product getProduct() {
-		return product;
-	}
-	public void setProduct(Product product) {
-		this.product = product;
 	}
 	public User getUser() {
 		return user;
@@ -41,17 +30,11 @@ public class Review {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public int getRating() {
-		return rating;
+	public LocalDate getOrderDate() {
+		return orderDate;
 	}
-	public void setRating(int rating) {
-		this.rating = rating;
-	}
-	public String getComment() {
-		return comment;
-	}
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setOrderDate(LocalDate orderDate) {
+		this.orderDate = orderDate;
 	}
 
     // Constructors, getters, and setters

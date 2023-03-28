@@ -15,18 +15,20 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
     
-    @GetMapping("/products")
+    
+    
+    @GetMapping("/stock")
     public String listProduct(Model model) {
         List<Product> products = productRepository.findAll();
         model.addAttribute("products", products);
-        System.out.println("HELLLO" + products);
-        return "products";
+        System.out.println("Products" + products);
+        return "products_display";
     }
 
-    @GetMapping("/products/new")
+    @GetMapping("/products/create")
     public String createProductForm(Model model) {
         model.addAttribute("product", new Product());
-        return "create_product";
+        return "products_create";
     }
 
     @PostMapping("/products")
